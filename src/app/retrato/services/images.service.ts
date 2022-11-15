@@ -16,12 +16,7 @@ export class ImagesService {
 
 
   getImages(){
-    this.http.get<RESTPhotos>(`${this.baseUrl}/images`)
-      .subscribe( (resp) => {
-        for(let i =0; i<resp.images.length; i++){
-          this.myImages[i] = resp.images[i].resourceURL;
-        }
-      });
+    return this.http.get<RESTPhotos>(`${this.baseUrl}/images`);
   }
 
   uploadImages(name:string, imagenes:File[]) {

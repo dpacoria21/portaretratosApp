@@ -10,8 +10,4 @@ export class NavbarComponent {
 
   constructor( private imagesService: ImagesService ) {}
 
-  llenarImagenes() {
-    return this.imagesService.getImages();
-  }
-
 }

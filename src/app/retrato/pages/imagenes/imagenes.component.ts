@@ -17,6 +17,12 @@ export class ImagenesComponent {
   }
 
   getImagenes():string[]{
-    return this.imagesService.misImagenes();
+    this.imagesService.getImages()
+    .subscribe( (resp) => {
+      for(let i =0; i<resp.images.length; i++){
+        this.myImage[i] = resp.images[i].resourceURL;
+      }
+    });
+    return this.myImage;
   }
 }
