@@ -20,7 +20,8 @@ export class UniqueComponent {
     console.log(this.publisher);
     console.log(this.file);
     this.imagesService.uploadImages(this.publisher, this.file);
-    this.router.navigate(['./datos']);
+    this.publisher = '';
+    this.file = [];
   }
 
   onFilechange(event: any) {

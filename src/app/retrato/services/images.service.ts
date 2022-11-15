@@ -20,12 +20,17 @@ export class ImagesService {
   }
 
   uploadImages(name:string, imagenes:File[]) {
-    this.http.post(`${this.baseUrl}/images/upload`,{publisher:name, images: imagenes})
+    const formData = new FormData();
+    formData.append("publisher", name);
+    for(let i = 0; i < imagenes.length; i++) {
+      formData.append("images", imagenes[i]);
+    }
+    console.log(formData);
+    this.http.post(`${this.baseUrl}/images/upload`, formData)
       .subscribe( resp =>{
         console.log(resp);
       });
   }
-
   misImagenes(): string[] {
     return this.myImages;  
   }

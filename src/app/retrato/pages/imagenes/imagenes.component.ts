@@ -6,23 +6,26 @@ import { ImagesService } from '../../services/images.service';
   templateUrl: './imagenes.component.html',
   styleUrls: ['./imagenes.component.css']
 })
-export class ImagenesComponent {
+export class ImagenesComponent implements OnInit {
 
   myImage: string[] = [];
 
-  constructor( private imagesService: ImagesService ){}
-
-  showImages() {
-    this.imagesService.getImages();
+  constructor( private imagesService: ImagesService ){
   }
+  ngOnInit(): void {
 
-  getImagenes():string[]{
     this.imagesService.getImages()
     .subscribe( (resp) => {
       for(let i =0; i<resp.images.length; i++){
         this.myImage[i] = resp.images[i].resourceURL;
       }
+    },(error) => {
+      console.log("Error!!!");
     });
-    return this.myImage;
+    
+  }
+
+  getImagenes():string[]{
+    return this.myImage
   }
 }
