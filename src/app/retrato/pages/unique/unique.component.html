@@ -1,0 +1,18 @@
+<div class="container">
+    <div class="title">
+        <h3>Subir Imagen</h3>
+    </div>
+    <form (ngSubmit)="enviar()">
+        <div class="form-floating mb-3">
+            <input type="text" name="publiser" [(ngModel)]="publisher" class="form-control" id="floatingInput" placeholder="name@example.com">
+            <label for="floatingInput">Publiser</label>
+        </div>
+        <div class="mb-3">
+            <input class="form-control" (change)="this.onFilechange($event)" type="file" name="imagenes" id="formFileMultiple" multiple>
+        </div>
+        <div class="d-grid gap-2 col-6 mx-auto">
+            <button class="btn btn-primary" type="submit">Subir</button>
+          </div>
+
+    </form>
+</div>

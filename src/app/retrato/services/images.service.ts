@@ -8,18 +8,33 @@ import { RESTPhotos } from '../interfaces/images.interface';
 })
 export class ImagesService {
 
-  private baseUrl: string = 'https://api.giphy.com/v1/gifs/search?api_key=MtQuaZGfd1UdsZHqwxwvkHPmbPZ8hhBB&q=Dragon Ball Z&limit=10';
+  private baseUrl: string = 'https://miutwo-api-production.up.railway.app/api';
 
   myImages: string[] = [];
 
   constructor( private http: HttpClient ) { }
 
 
-  getImages():void {
-    this.http.get<any>(`${this.baseUrl}`)
+  getImages(){
+    this.http.get<RESTPhotos>(`${this.baseUrl}/images`)
       .subscribe( (resp) => {
+        for(let i =0; i<resp.images.length; i++){
+          this.myImages[i] = resp.images[i].resourceURL;
+        }
+      });
+  }
+
+  uploadImages(name:string, imagenes:File[]) {
+    this.http.post(`${this.baseUrl}/images/upload`,{publisher:name, images: imagenes})
+      .subscribe( resp =>{
         console.log(resp);
       });
   }
+
+  misImagenes(): string[] {
+    return this.myImages;  
+  }
+
+  
 
 }

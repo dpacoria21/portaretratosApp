@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ImagesService } from './retrato/services/images.service';
+import { RESTPhotos } from './retrato/interfaces/images.interface';
 
 @Component({
   selector: 'app-root',
@@ -8,8 +9,5 @@ import { ImagesService } from './retrato/services/images.service';
 })
 export class AppComponent {
   title = 'portaretratoApp';
-
-  constructor( ){}
-
   
 }

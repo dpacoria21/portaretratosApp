@@ -1,19 +1,32 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { EjemploComponent } from './pages/ejemplo/ejemplo.component';
 import { HttpClientModule } from '@angular/common/http';
+import { UniqueComponent } from './pages/unique/unique.component';
+import { NavbarComponent } from './pages/navbar/navbar.component';
+import { MainPageComponent } from './pages/main-page/main-page.component';
+import { RouterModule } from '@angular/router';
+import { ImagenesComponent } from './pages/imagenes/imagenes.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
   declarations: [
-    EjemploComponent,
+    UniqueComponent,
+    NavbarComponent,
+    MainPageComponent,
+    ImagenesComponent
   ],
   imports: [
     CommonModule,
-    HttpClientModule
+    HttpClientModule,
+    RouterModule,
+    FormsModule
   ],
   exports: [
-    EjemploComponent
+    UniqueComponent,
+    NavbarComponent,
+    MainPageComponent,
+    ImagenesComponent
   ]
 })
 export class RetratoModule { }
